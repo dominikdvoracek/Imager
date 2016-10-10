@@ -106,21 +106,6 @@ class Image
       $msg = sprintf('Dimension of %s must be greater than 0, "%s" given.', $type, $dimension);
       throw new InvalidArgumentException($msg);
     }
-
-    // cannot be generate new image greater than 200 % of original image
-
-    // is number
-    $originDimension = $this->image->{'get' . Strings::firstUpper($type)}();
-    if (Validators::isNumeric($dimension) && $dimension > $originDimension * 2) {
-      $msg = sprintf('Required %s cannot be greater than 200 percent of original, "%s" required and "%s" is original.', $type, $dimension, $originDimension);
-      throw new InvalidArgumentException($msg);
-    }
-
-    // is percent
-    if (Strings::endsWith($dimension, '%') && (int)$dimension > 200) {
-      $msg = sprintf('Required %s cannot be greater than 200 percent of original, "%s" required.', $type, $dimension);
-      throw new InvalidArgumentException($msg);
-    }
   }
 
 
