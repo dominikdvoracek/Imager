@@ -56,6 +56,7 @@ class Route extends Application\Routers\Route
 
     $response = new ImageResponse($this->repository, $this->imageFactory);
     $response->send(new Http\Request($url), new Http\Response);
+	  exit;
   }
 
 
